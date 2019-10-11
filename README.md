@@ -17,7 +17,7 @@
 - UI基础库：`actionsheet`,`alert`,`confirm`等基础交互封装；
 - 集成本地总线，极光推送等常用功能；
 
-<img src='http://h5.sumslack.com/flutter-scaffold.png' alt='preview' />
+<img src='http://h5.sumslack.com/flutter-scaffold.png' width="320px" alt='preview' />
 
 # 赞助
 
