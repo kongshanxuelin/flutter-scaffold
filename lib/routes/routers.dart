@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../pages/SingleManagerWidgets.dart';
 import '../event/ApplicationEvent.dart';
+import "../pages/ex/ex_api.dart";
 
 class Routes {
   static String root = "/";
@@ -12,6 +13,9 @@ class Routes {
   static String login = "/login";
   static String webViewPage = '/web-view-page';
   static String loginPage = '/loginpage';
+
+  //demo例子
+  static final exApi = "/ex/api";
 
   static String test1 = '/test1';
   static String test2 = '/test2';
@@ -26,6 +30,7 @@ class Routes {
     body: (BuildContext context) => SingleManagerWidgets.instance.getBody(),
     me:(BuildContext context) => SingleManagerWidgets.instance.getMe(),
 
+    exApi:(BuildContext context) => ExApiWidget(),
     //3个测试页面
     test1:(BuildContext context) => SingleManagerWidgets.instance.getTestPage("测试1"),
     test2:(BuildContext context) => SingleManagerWidgets.instance.getTestPage("测试2"),

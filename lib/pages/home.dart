@@ -12,13 +12,8 @@ class PageHome extends StatefulWidget{
   _PageHomeState createState() => _PageHomeState();
 }
 var menus = [
-  {"route":"/test1","title":"路由页面","icon":MyIcons.qingjia,"isnew":true},
+  {"route":Routes.exApi,"title":"基本API","icon":MyIcons.qingjia,"isnew":true},
   {"route":"/timeline","title":"Bus切换","icon":MyIcons.fabu},
-  {"route":"/ajax","title":"ajax","icon":Icons.network_check,"isnew":true},
-  {"route":"/test1","title":"功能4","icon":MyIcons.qingjia},
-  {"route":"/alert","title":"alert","icon":Icons.add_alert},
-  {"route":"/confirm","title":"confirm","icon":Icons.account_circle},
-  {"route":"/actionsheet","title":"ActionSheet","icon":Icons.account_circle},
 ];
 class _PageHomeState extends State<PageHome> {
   doAjax(BuildContext context) async{
@@ -34,25 +29,7 @@ class _PageHomeState extends State<PageHome> {
           children: menus.map((Map s) => GestureDetector(
             onTap:(){
               String router = s["route"];
-              if(router == "/alert"){
-                SsUI.alert(context,"警告对话框测试",callback:(){
-                  return true;
-                });
-              }else if(router == "/confirm"){
-                SsUI.confirm(context,"是否确定删除",callback:(isok){
-                  print(isok);
-                });
-              }else if(router == "/actionsheet"){
-                SsUI.showActionSheet(context, [
-                  "Menu1","Menu2","Menu3"
-                ], (item){
-                  print(item);
-                },title:"下拉菜单");
-              }else if(router == "/ajax"){
-                doAjax(context);
-              }else {
-                Routes.nav(context,router);
-              }
+              Routes.nav(context,router);
             },
             child: Center(
                 child: Stack(

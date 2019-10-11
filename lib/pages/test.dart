@@ -8,6 +8,8 @@ class TestPage extends StatelessWidget {
     var _args = "";
     if(args is String){
       _args = args;
+    }else if(args is Map){
+      args.forEach((k,v) => _args += " ${k}:${v} ");
     }
     return new Scaffold(
       appBar: new AppBar(

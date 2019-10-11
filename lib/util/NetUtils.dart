@@ -36,7 +36,7 @@ class NetUtils {
     return response.data;
   }
 
-  static Future post(String url, Map<String, dynamic> params) async {
+  static dynamic post(String url, Map<String, dynamic> params) async {
     // // 设置代理 便于本地 charles 抓包
     // (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
     //     (HttpClient client) {
@@ -50,6 +50,6 @@ class NetUtils {
 //    await dir.create();
     //dio.interceptors.add(CookieManager(PersistCookieJar(dir: dir.path)));
     var response = await dio.post(url, data: params);
-    return response;
+    return response.data;
   }
 }

@@ -18,6 +18,7 @@
 - 集成本地总线，极光推送等常用功能；
 
 <img src='http://h5.sumslack.com/flutter-scaffold.png' width="320px" alt='preview' />
+<img src='http://h5.sumslack.com/flutter-scaffold2.png' width="320px" alt='preview' />
 
 # 赞助
 
@@ -26,5 +27,9 @@
 <img src="http://h5.sumslack.com/wechat.jpg" width="200px" /> <img src="http://h5.sumslack.com/alipay.jpg" width="200px" />
 
 ## 版本发布
+### 1.0.2(TODO)
+- 高德地图整合与应用
+### 1.0.1
+- 基础API封装与示例
 ### 1.0.0
 - 首次发布
