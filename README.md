@@ -20,11 +20,6 @@
 <img src='http://h5.sumslack.com/flutter-scaffold.png' width="320px" alt='preview' />
 <img src='http://h5.sumslack.com/flutter-scaffold2.png' width="320px" alt='preview' />
 
-# 赞助
-
-如有帮助，欢迎赞助
-
-<img src="http://h5.sumslack.com/wechat.jpg" width="200px" /> <img src="http://h5.sumslack.com/alipay.jpg" width="200px" />
 
 ## 版本发布
 ### 1.0.2(TODO)
