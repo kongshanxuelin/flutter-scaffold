@@ -75,6 +75,7 @@ flutter:
   assets:
     - assets/ss.db
     - assets/images/
+    - assets/images/3.0x/
     - assets/fonts/
 
   fonts:
