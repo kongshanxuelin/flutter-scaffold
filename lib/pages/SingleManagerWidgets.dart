@@ -4,9 +4,8 @@ import "timeline.dart";
 import "body.dart";
 import "me.dart";
 import "test.dart";
-import '../login.dart';
 import "../widgets/404.dart";
-
+import '../widgets/webview_page.dart';
 
 class SingleManagerWidgets {
   // 工厂模式
@@ -38,10 +37,11 @@ class SingleManagerWidgets {
   Widget getMe(){
     return PageMe();
   }
-  Widget getLogin(){
-    return PageLogin();
-  }
   Widget getTestPage(String title){
     return TestPage(title:title);
+  }
+
+  Widget webview(){
+    return WebViewPage();
   }
 }

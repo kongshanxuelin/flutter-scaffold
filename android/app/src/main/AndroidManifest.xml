@@ -11,6 +11,15 @@
     <uses-permission android:name="android.permission.MODE_WORLD_READABLE" />
     <uses-permission android:name="android.permission.MODE_WORLD_WRITEABLE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
 
     <application
         android:name="io.flutter.app.FlutterApplication"
@@ -30,12 +39,20 @@
             <meta-data
                 android:name="io.flutter.app.android.SplashScreenUntilFirstFrame"
                 android:value="true" />
+
+            <!--高德地图API，获取key的方法请参考：https://lbs.amap.com/faq/top/hot-questions/249-->
+            <meta-data
+                android:name="com.amap.api.v2.apikey"
+                android:value="f3951fe8b1ca3f39f8346bbfe19fef5a" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        
+        <!--高德-->
+
+
     </application>
 </manifest>

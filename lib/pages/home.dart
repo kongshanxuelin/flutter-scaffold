@@ -13,7 +13,11 @@ class PageHome extends StatefulWidget{
 }
 var menus = [
   {"route":Routes.exApi,"title":"基本API","icon":MyIcons.qingjia,"isnew":true},
-  {"route":"/timeline","title":"Bus切换","icon":MyIcons.fabu},
+  {"route":Routes.timeline,"title":"Bus切换","icon":MyIcons.fabu},
+  {"route":Routes.login,"title":"登录页","icon":MyIcons.fabu},
+  {"route":Routes.webview,"route_args":{"title":"百度22","url":"http://www.baidu.com"}, "title":"打开网页","icon":MyIcons.fabu},
+  {"route":Routes.exCharts,"title":"Charts","icon":MyIcons.fabu},
+  {"route":Routes.exAMap,"title":"高德地图","icon":MyIcons.fabu},
 ];
 class _PageHomeState extends State<PageHome> {
   doAjax(BuildContext context) async{
@@ -29,7 +33,10 @@ class _PageHomeState extends State<PageHome> {
           children: menus.map((Map s) => GestureDetector(
             onTap:(){
               String router = s["route"];
-              Routes.nav(context,router);
+              if(s.containsKey("route_args"))
+                Routes.nav(context,router,args:s["route_args"]);
+              else
+                Routes.nav(context,router);
             },
             child: Center(
                 child: Stack(

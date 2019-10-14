@@ -2,13 +2,25 @@ import 'package:flutter/material.dart';
 import '../pages/SingleManagerWidgets.dart';
 import '../event/ApplicationEvent.dart';
 import "../pages/ex/ex_api.dart";
+import "../pages/ex/ex_login.dart";
+import "../pages/ex/ex_chart.dart";
+import "../pages/ex/ex_amap.dart";
+import "../app.dart";
+
 
 class Routes {
   static String root = "/";
+
+  //导航到主页
+  static String app = "/app";
+
   static String home = "/home";
   static String timeline = "/timeline";
   static String body = "/body";
   static String me = "/me";
+
+  //公共页
+  static String webview = "/webview";
 
   static String login = "/login";
   static String webViewPage = '/web-view-page';
@@ -16,6 +28,8 @@ class Routes {
 
   //demo例子
   static final exApi = "/ex/api";
+  static final exCharts = "/ex/chart";
+  static final exAMap = "/ex/amap";
 
   static String test1 = '/test1';
   static String test2 = '/test2';
@@ -23,14 +37,20 @@ class Routes {
 
   static Map<String,WidgetBuilder> routeTable = <String, WidgetBuilder>{
     //也可以不定义home属性，用/启动首页
-    //"/": (BuildContext context) => new MyPage(title: '首页'),
-    login: (BuildContext context) => SingleManagerWidgets.instance.getLogin(),
+//    "/": (BuildContext context) => Navigation(),
+
+    app: (BuildContext context) => Navigation(),
+    login: (BuildContext context) => ExLoginPage(),
     home: (BuildContext context) => SingleManagerWidgets.instance.getHome(),
     timeline: (BuildContext context) => SingleManagerWidgets.instance.getTimeline(),
     body: (BuildContext context) => SingleManagerWidgets.instance.getBody(),
     me:(BuildContext context) => SingleManagerWidgets.instance.getMe(),
 
+    webview:(BuildContext context) => SingleManagerWidgets.instance.webview(),
+
     exApi:(BuildContext context) => ExApiWidget(),
+    exCharts:(BuildContext context) => ExChartPage(),
+    exAMap:(BuildContext context) => ExAMapPage(),
     //3个测试页面
     test1:(BuildContext context) => SingleManagerWidgets.instance.getTestPage("测试1"),
     test2:(BuildContext context) => SingleManagerWidgets.instance.getTestPage("测试2"),
@@ -60,4 +80,5 @@ class Routes {
       Navigator.of(context).pushNamed(name);
     }
   }
+
 }
