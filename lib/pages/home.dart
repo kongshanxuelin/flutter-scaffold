@@ -13,6 +13,7 @@ class PageHome extends StatefulWidget{
 }
 var menus = [
   {"route":Routes.exApi,"title":"基本API","icon":MyIcons.qingjia,"isnew":true},
+  {"route":Routes.exListview,"title":"列表Demo","icon":MyIcons.fabu},
   {"route":Routes.timeline,"title":"Bus切换","icon":MyIcons.fabu},
   {"route":Routes.login,"title":"登录页","icon":MyIcons.fabu},
   {"route":Routes.webview,"route_args":{"title":"百度22","url":"http://www.baidu.com"}, "title":"打开网页","icon":MyIcons.fabu},

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ssi/pages/ex/ex_listview.dart';
 import '../pages/SingleManagerWidgets.dart';
 import '../event/ApplicationEvent.dart';
 import "../pages/ex/ex_api.dart";
@@ -30,6 +31,7 @@ class Routes {
   static final exApi = "/ex/api";
   static final exCharts = "/ex/chart";
   static final exAMap = "/ex/amap";
+  static final exListview = "/ex/listview";
 
   static String test1 = '/test1';
   static String test2 = '/test2';
@@ -51,6 +53,7 @@ class Routes {
     exApi:(BuildContext context) => ExApiWidget(),
     exCharts:(BuildContext context) => ExChartPage(),
     exAMap:(BuildContext context) => ExAMapPage(),
+    exListview:(BuildContext context) => ExListViewPage(),
     //3个测试页面
     test1:(BuildContext context) => SingleManagerWidgets.instance.getTestPage("测试1"),
     test2:(BuildContext context) => SingleManagerWidgets.instance.getTestPage("测试2"),
