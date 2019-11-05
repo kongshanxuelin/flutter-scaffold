@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:installLocation="preferExternal"
     package="com.example.ssi">
 
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
@@ -17,9 +18,8 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:name="io.flutter.app.FlutterApplication"
@@ -54,6 +54,10 @@
 
         <!--高德-->
 
+        <!--  任务栏通知 -->
+        <service
+            android:name="com.mythichelm.localnotifications.services.LocalNotificationsService"
+            android:exported="false" />
 
     </application>
 </manifest>

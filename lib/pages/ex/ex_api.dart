@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import '../../util/MyIcons.dart';
 import '../../routes/routers.dart';
 import "../../util/ui_common.dart";
-import "../../util/NetUtils.dart";
+import "../../util/ss.dart";
 import "../../components/bottom_sheet.dart";
+import '../../util/sumslack_api.dart' as sumslack;
 
 class ExApiWidget extends StatelessWidget {
   static const String ID_ALERT = "alert";
@@ -17,6 +18,7 @@ class ExApiWidget extends StatelessWidget {
   static const String ID_GET = "get";
   static const String ID_POST = "post";
   static const String ID_JPUSH = "jpush";
+  static const String ID_SUMSLACKAPI = "sumslackapi";
 
   List items = [
     {"title":ID_ALERT,"d":"弹出警告框"},
@@ -28,6 +30,7 @@ class ExApiWidget extends StatelessWidget {
     {"title":ID_CLOSE,"d":"关闭当前页面"},
     {"title":ID_GET,"d":"网络get请求"},
     {"title":ID_POST,"d":"网络post请求"},
+    {"title":ID_SUMSLACKAPI,"d":"调用云API - Detail"},
     {"title":ID_JPUSH,"label":"极光推送","d":"极光推送测试，发送的请求会以Notification的形式返回"},
   ];
 
@@ -78,6 +81,10 @@ class ExApiWidget extends StatelessWidget {
       case ID_POST:
         String str = await NetUtils.post("http://wx.sumslack.com/restful/stat/stat.jhtml",{"a":1});
         SsUI.alert(context, str);
+        break;
+      case ID_SUMSLACKAPI:
+        dynamic str = await sumslack.get("/sys/api/detail/1",{"test":"hello"});
+        SsUI.alert(context, str.toString());
         break;
       case ID_JPUSH:
         await NetUtils.get("http://192.168.1.154:6060/report/jpush/msg?title=flutter scaffold&msg=Hello,World!");

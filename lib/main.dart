@@ -3,6 +3,7 @@ import "app.dart";
 import "util/sp.dart";
 import 'util/db.dart';
 import 'package:amap_base/amap_base.dart';
+import 'util/sumslack_api.dart' as sumslack;
 
 SpUtil sp;
 var db;
@@ -17,6 +18,9 @@ void main() async {
 
   //从线上拉取首页导航项
   db = Provider.db;
+
+  //初始化Sumslack云API
+  sumslack.init("xxxx", "yyy");
 
   runApp(Navigation());
 }

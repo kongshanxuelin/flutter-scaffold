@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:flutter_native_image/flutter_native_image.dart';
+//import 'package:local_notifications/local_notifications.dart';
+import 'dart:io';
 import "../components/bottom_sheet.dart";
 import "../components/toast_widget.dart";
 
 class SsUI{
+  static Future<File> compressImage(String fileName,num quality,num percentage){
+    return FlutterNativeImage.compressImage(fileName,quality: quality,percentage: percentage);
+  }
+//  static Future<Null> notify(String title,String content,num id,{Function callback,String payload,String action,bool launchesApp=false}){
+//    return LocalNotifications.createNotification(title: title, content: content, id: id,
+//    onNotificationClick: new NotificationAction(actionText: action, callback: callback, payload: payload,launchesApp:launchesApp));
+//  }
+//  static Future<Null> removeNotify(num id){
+//    return LocalNotifications.removeNotification(id);
+//  }
   static alert(BuildContext context,String msg,{String title,Function callback}){
     showDialog(
         context:context,
