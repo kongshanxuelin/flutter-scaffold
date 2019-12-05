@@ -4,19 +4,43 @@ import 'dart:convert';
 import 'package:convert/convert.dart';
 import 'dart:math';
 import 'NetUtils.dart';
+import '../config.dart' as C;
 import 'dart:collection';
 import 'package:crypto/crypto.dart' as crypto;
 
-var _API_BASE_URL = "http://wstest.idbhost.com/finIndex";
-var _APPID = "894344910875";
-var _APPSEC = "9ee3b6066bb55ac7aee3476dec29afbb";
+var _API_BASE_URL = C.Config.url_gateway;
+var _APPID = C.Config.appId;
+var _APPSEC = C.Config.appSec;
 
 init(appId,appSec){
   _APPID = appId;
   _APPSEC = appSec;
 }
-
-get(url,[Map<String, dynamic> params]) async{
+auth(String username,String pass,{String authType="jwt"}) async{
+  String url = C.Config.url_auth + "/auth/jwt/login";
+  var login = await _request(url,params:{
+    "username":username,
+    "password":pass
+  });
+  if(login["status"]==0){
+    NetUtils.setHeader("Authorization", "Bearer " + login["data"].toString());
+    NetUtils.setHeader("AuthorizationType", authType);
+  }else{
+    NetUtils.removeHeader("Authorization");
+    NetUtils.removeHeader("AuthorizationType");
+  }
+  return login;
+}
+get(url,Map<String, dynamic> p) async{
+  return _request(_API_BASE_URL + url,method:"GET",params:p);
+}
+post(url,Map<String, dynamic> p) async{
+  return _request(_API_BASE_URL + url,method:"POST",params:p);
+}
+delete(url,Map<String, dynamic> p) async{
+  return _request(_API_BASE_URL + url,method:"DELETE",params:p);
+}
+_request(url,{String method:"GET",Map<String, dynamic> params}) async{
   int timestamp = DateTime.now().millisecondsSinceEpoch ~/ 1000;
   var randStr = 'abcdefghijklmnopqrstuvwxyz0123456789';
   var _nonceStr = _nonce(16);
@@ -36,8 +60,15 @@ get(url,[Map<String, dynamic> params]) async{
   String _sign = _generateMd5(_params);
   params['sign'] = _sign;
 
-  print("==================paramStr:" + (_API_BASE_URL + url) + "=>" + params.toString());
-  var res = await NetUtils.get( _API_BASE_URL + url,params);
+  print("==================paramStr:" + url + "=>" + params.toString());
+  dynamic res;
+  if(method == "POST"){
+    res = await NetUtils.post( url,params);
+  }else if(method == "DELETE"){
+    res = await NetUtils.delete( url,params);
+  }else{
+    res = await NetUtils.get( url,params);
+  }
   print("++++++retun res:"+res.toString());
   return res;
 }

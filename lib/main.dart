@@ -4,7 +4,7 @@ import "util/sp.dart";
 import 'util/db.dart';
 import 'package:amap_base/amap_base.dart';
 import 'util/sumslack_api.dart' as sumslack;
-
+import 'config.dart' as C;
 SpUtil sp;
 var db;
 
@@ -15,12 +15,9 @@ void main() async {
   await provider.init(true);
   //初始化个性化设置
   sp = await SpUtil.getInstance();
-
-  //从线上拉取首页导航项
   db = Provider.db;
-
   //初始化Sumslack云API
-  sumslack.init("xxxx", "yyy");
+  sumslack.init(C.Config.appId, C.Config.appSec);
 
   runApp(Navigation());
 }

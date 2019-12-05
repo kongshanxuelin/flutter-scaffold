@@ -19,6 +19,7 @@ class ExApiWidget extends StatelessWidget {
   static const String ID_POST = "post";
   static const String ID_JPUSH = "jpush";
   static const String ID_SUMSLACKAPI = "sumslackapi";
+  static const String ID_SUMSLACK_AUTH_API = "sumspackapi_auth";
 
   List items = [
     {"title":ID_ALERT,"d":"弹出警告框"},
@@ -31,6 +32,7 @@ class ExApiWidget extends StatelessWidget {
     {"title":ID_GET,"d":"网络get请求"},
     {"title":ID_POST,"d":"网络post请求"},
     {"title":ID_SUMSLACKAPI,"d":"调用云API - Detail"},
+    {"title":ID_SUMSLACK_AUTH_API,"d":"调用云统一认证"},
     {"title":ID_JPUSH,"label":"极光推送","d":"极光推送测试，发送的请求会以Notification的形式返回"},
   ];
 
@@ -84,6 +86,10 @@ class ExApiWidget extends StatelessWidget {
         break;
       case ID_SUMSLACKAPI:
         dynamic str = await sumslack.get("/sys/api/detail/1",{"test":"hello"});
+        SsUI.alert(context, str.toString());
+        break;
+      case ID_SUMSLACK_AUTH_API:
+        dynamic str = await sumslack.auth("test3333", "test3333");
         SsUI.alert(context, str.toString());
         break;
       case ID_JPUSH:
